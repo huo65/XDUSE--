@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="CurTimeAppClient">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/08.Stateless/Client/CurTimeAppClient.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

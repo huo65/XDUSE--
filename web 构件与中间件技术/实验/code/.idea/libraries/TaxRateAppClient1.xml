@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="TaxRateAppClient1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/11.CMP1.1/Client/TaxRateAppClient.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

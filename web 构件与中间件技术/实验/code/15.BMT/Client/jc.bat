@@ -1,0 +1,1 @@
+javac -classpath "%CLASSPATH%;BankAppClient.jar" BankerClient.java

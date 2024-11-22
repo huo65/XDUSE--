@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ShoppingBagAppClient">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/10.Stateful/Client/ShoppingBagAppClient.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

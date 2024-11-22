@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/02.Application" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/03.ValueType" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/04.POAServant" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/05.ServantActivtor" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/06.ServantLocator" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/07.AdapterActivator" isTestSource="false" packagePrefix="Bank" />
+      <sourceFolder url="file://$MODULE_DIR$/10.Stateful" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/11.CMP1.1" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/12.CMP2.0" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/13.FlexibleConverter" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/14.CMT" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/15.BMT" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/16.Security" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

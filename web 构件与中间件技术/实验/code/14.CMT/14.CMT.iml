@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/Client" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/CreateDataBase" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="14.CMT" level="project" />
+    <orderEntry type="library" name="BankAppClient1" level="project" />
+    <orderEntry type="library" name="15.BMT" level="project" />
+    <orderEntry type="library" name="BankAppClient" level="project" />
+    <orderEntry type="module" module-name="code" />
+  </component>
+</module>

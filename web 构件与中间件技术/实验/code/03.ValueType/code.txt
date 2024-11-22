@@ -1,0 +1,5 @@
+java.io.Serializable val = new AccountImpl(0);
+        // 通过read_value从InputStream中读取对象状态
+        val = ((org.omg.CORBA_2_3.portable.InputStream) is).
+			read_value(val);
+        return val;

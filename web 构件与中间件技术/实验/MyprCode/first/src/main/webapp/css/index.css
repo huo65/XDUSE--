@@ -1,0 +1,59 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    background: url(../imgs/bg.jpg) no-repeat 0px 0px;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    -moz-background-size: 100% 100%;
+}
+
+/* index.css */
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    font-size: 36px; /* 字体大小扩大1倍 */
+    color: white; /* 字体颜色设置为白色 */
+    margin-bottom: 10px;
+}
+
+input[type="text"] {
+    font-size: 32px; /* 字体大小扩大1倍 */
+    padding: 5px;
+    margin-bottom: 10px;
+}
+
+button {
+    font-size: 32px; /* 字体大小扩大1倍 */
+    padding: 5px 10px;
+    background-color: #4CAF50;
+    color: white; /* 字体颜色设置为白色 */
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+

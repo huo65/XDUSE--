@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="OrderBeanAppClient">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/12.CMP2.0/Client/OrderBeanAppClient.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

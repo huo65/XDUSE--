@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="BankAppClient1">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/14.CMT/Client/BankAppClient.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

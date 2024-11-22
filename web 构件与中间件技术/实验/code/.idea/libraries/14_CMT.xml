@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="14.CMT">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/14.CMT/BankAppClient.jar!/" />
+      <root url="jar://$PROJECT_DIR$/14.CMT/ejb_temp32391.jar!/" />
+      <root url="jar://$PROJECT_DIR$/14.CMT/ejb_temp19349.jar!/" />
+      <root url="jar://$PROJECT_DIR$/14.CMT/ejb_temp32399.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

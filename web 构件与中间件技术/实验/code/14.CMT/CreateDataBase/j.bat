@@ -1,0 +1,1 @@
+java -classpath "%CLASSPATH%;C:\j2sdkee1.3.1\lib\cloudscape\cloudclient.jar;C:\j2sdkee1.3.1\lib\cloudscape\RmiJdbc.jar" CreateSampleData

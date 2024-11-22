@@ -1,0 +1,6 @@
+0:0:0:0:0:0:0:1 - - [23/May/2024:09:21:32 +0800] "GET /second HTTP/1.1" 302 - http-bio-8080-exec-1 0
+0:0:0:0:0:0:0:1 - - [23/May/2024:09:21:32 +0800] "GET /second HTTP/1.1" 302 - http-bio-8080-exec-3 0
+0:0:0:0:0:0:0:1 - - [23/May/2024:09:21:32 +0800] "GET /second/ HTTP/1.1" 200 1782 http-bio-8080-exec-2 567
+0:0:0:0:0:0:0:1 - - [23/May/2024:09:21:32 +0800] "GET /second/ HTTP/1.1" 200 1782 http-bio-8080-exec-5 1
+0:0:0:0:0:0:0:1 - - [23/May/2024:09:22:13 +0800] "POST /second/StuInfoServlet HTTP/1.1" 200 1980 http-bio-8080-exec-6 243
+0:0:0:0:0:0:0:1 - - [23/May/2024:09:24:46 +0800] "POST /second/StuInfoServlet HTTP/1.1" 200 1888 http-bio-8080-exec-8 9

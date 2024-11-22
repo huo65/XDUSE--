@@ -1,0 +1,5 @@
+0:0:0:0:0:0:0:1 - - [18/May/2024:16:48:59 +0800] "GET /first HTTP/1.1" 302 - http-bio-8080-exec-2 0
+0:0:0:0:0:0:0:1 - - [18/May/2024:16:49:00 +0800] "GET /first/ HTTP/1.1" 200 524 http-bio-8080-exec-3 107
+0:0:0:0:0:0:0:1 - - [18/May/2024:16:49:00 +0800] "GET /first/css/index.css HTTP/1.1" 304 - http-bio-8080-exec-4 5
+0:0:0:0:0:0:0:1 - - [18/May/2024:16:49:00 +0800] "GET /favicon.ico HTTP/1.1" 404 - http-bio-8080-exec-5 0
+0:0:0:0:0:0:0:1 - - [18/May/2024:16:50:30 +0800] "POST /first/UpperCaseServlet HTTP/1.1" 200 533 http-bio-8080-exec-7 8

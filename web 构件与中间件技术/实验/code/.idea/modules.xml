@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/01.RMISample/01.RMISample.iml" filepath="$PROJECT_DIR$/01.RMISample/01.RMISample.iml" />
+      <module fileurl="file://$PROJECT_DIR$/08.Stateless/08.Stateless.iml" filepath="$PROJECT_DIR$/08.Stateless/08.Stateless.iml" />
+      <module fileurl="file://$PROJECT_DIR$/09.HelloApp/09.HelloApp.iml" filepath="$PROJECT_DIR$/09.HelloApp/09.HelloApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/10.Stateful/10.Stateful.iml" filepath="$PROJECT_DIR$/10.Stateful/10.Stateful.iml" />
+      <module fileurl="file://$PROJECT_DIR$/11.CMP1.1/11.CMP1.1.iml" filepath="$PROJECT_DIR$/11.CMP1.1/11.CMP1.1.iml" />
+      <module fileurl="file://$PROJECT_DIR$/12.CMP2.0/12.CMP2.0.iml" filepath="$PROJECT_DIR$/12.CMP2.0/12.CMP2.0.iml" />
+      <module fileurl="file://$PROJECT_DIR$/13.FlexibleConverter/13.FlexibleConverter.iml" filepath="$PROJECT_DIR$/13.FlexibleConverter/13.FlexibleConverter.iml" />
+      <module fileurl="file://$PROJECT_DIR$/14.CMT/14.CMT.iml" filepath="$PROJECT_DIR$/14.CMT/14.CMT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/15.BMT/15.BMT.iml" filepath="$PROJECT_DIR$/15.BMT/15.BMT.iml" />
+      <module fileurl="file://$PROJECT_DIR$/16.Security/16.Security.iml" filepath="$PROJECT_DIR$/16.Security/16.Security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/code.iml" filepath="$PROJECT_DIR$/code.iml" />
+    </modules>
+  </component>
+</project>

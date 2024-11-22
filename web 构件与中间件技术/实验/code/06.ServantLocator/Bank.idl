@@ -1,0 +1,11 @@
+module Bank{
+	interface Account{
+		void deposit(in float amount);
+		boolean withdraw(in float amount);
+		float getBalance();
+	};
+	
+	interface AccountManager{
+		Account open(in string name);
+	};
+};

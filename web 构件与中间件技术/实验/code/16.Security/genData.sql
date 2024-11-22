@@ -1,0 +1,1 @@
+insert into "AccountBeanTable" VALUES(2000,'name1');

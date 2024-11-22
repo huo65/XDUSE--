@@ -1,0 +1,22 @@
+// 银行帐户管理系统的对象接口定义
+module Bank {
+    // 帐户
+    valuetype Account {
+	private float balance;       //帐户的当前余额 
+        // 存款
+        void deposit(in float amount);
+        // 取款
+        boolean withdraw(in float amount);
+        // 查询余额
+        float getBalance();
+	// 初始化
+	factory open(in float init);
+
+    };
+
+    // 帐户管理员
+    interface AccountManager {
+        // 查询指定名字的帐户，查无则新开帐户
+        Account open(in string name);
+    };
+}; 

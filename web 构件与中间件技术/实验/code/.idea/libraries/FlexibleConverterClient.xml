@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="FlexibleConverterClient">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/13.FlexibleConverter/Client/FlexibleConverterClient.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
