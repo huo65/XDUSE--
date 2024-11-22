@@ -1,0 +1,24 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Acpp/secondEdit/Elevator.cpp
+Elevator.h
+D:/Acpp/secondEdit/Elevator.h
+global.h
+D:/Acpp/secondEdit/global.h
+iostream
+-
+
+D:/Acpp/secondEdit/Elevator.h
+Windows.h
+-
+global.h
+D:/Acpp/secondEdit/global.h
+
+D:/Acpp/secondEdit/global.h
+

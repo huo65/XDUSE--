@@ -1,0 +1,3 @@
+D:/Acpp/secondEdit/cmake-build-debug/CMakeFiles/secondEdit.dir
+D:/Acpp/secondEdit/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Acpp/secondEdit/cmake-build-debug/CMakeFiles/rebuild_cache.dir

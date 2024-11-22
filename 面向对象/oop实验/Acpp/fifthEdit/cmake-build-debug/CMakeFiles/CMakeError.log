@@ -1,0 +1,16 @@
+Determining if the C compiler works failed with the following output:
+Change Dir: D:/360MoveData/Users/86132/Desktop/学校/22xia/oopex/Acpp/fifthEdit/cmake-build-debug/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/PROGRA~2/mingw64/bin/mingw32-make.exe cmTC_5a71b/fast && C:/PROGRA~2/mingw64/bin/mingw32-make.exe  -f CMakeFiles\cmTC_5a71b.dir\build.make CMakeFiles/cmTC_5a71b.dir/build
+mingw32-make.exe[1]: Entering directory 'D:/360MoveData/Users/86132/Desktop/学校/22xia/oopex/Acpp/fifthEdit/cmake-build-debug/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_5a71b.dir/testCCompiler.c.obj
+C:\PROGRA~2\mingw64\bin\gcc.exe    -o CMakeFiles\cmTC_5a71b.dir\testCCompiler.c.obj   -c D:\360MoveData\Users\86132\Desktop\瀛︽牎\22xia\oopex\Acpp\fifthEdit\cmake-build-debug\CMakeFiles\CMakeTmp\testCCompiler.c
+gcc.exe: error: D:\360MoveData\Users\86132\Desktop\瀛︽牎\22xia\oopex\Acpp\fifthEdit\cmake-build-debug\CMakeFiles\CMakeTmp\testCCompiler.c: No such file or directory
+gcc.exe: fatal error: no input files
+compilation terminated.
+mingw32-make.exe[1]: *** [CMakeFiles\cmTC_5a71b.dir\build.make:85: CMakeFiles/cmTC_5a71b.dir/testCCompiler.c.obj] Error 1
+mingw32-make.exe[1]: Leaving directory 'D:/360MoveData/Users/86132/Desktop/学校/22xia/oopex/Acpp/fifthEdit/cmake-build-debug/CMakeFiles/CMakeTmp'
+mingw32-make.exe: *** [Makefile:140: cmTC_5a71b/fast] Error 2
+
+
+

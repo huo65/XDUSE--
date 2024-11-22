@@ -1,0 +1,178 @@
+Turbo Assembler	 Version 4.1	    23/11/20 16:20:42	    Page 1
+D:\huo\8250.asm
+
+
+
+      1				     ;8250和PC机通信，需要在PC上运行一个串口软件，并设置与8250相同的波特率
+      2	      =0240		     NS8250_Base_Address     EQU     0240H
+      3				     RHR	     EQU     NS8250_Base_Address	     ;接收数据缓冲区
+      4				     THR	     EQU     NS8250_Base_Address	     ;发送数据缓冲区
+      5	      =0241		     IER	     EQU     NS8250_Base_Address+1	     ;中断控制寄存器
+      6	      =0242		     FCR	     EQU     NS8250_Base_Address+2	     ;FIFO控制寄存器
+      7	      =0242		     ISR	     EQU     NS8250_Base_Address+2	     ;中断状态寄存器
+      8	      =0243		     LCR	     EQU     NS8250_Base_Address+3	     ;串行口控制寄存器
+      9	      =0244		     MCR	     EQU     NS8250_Base_Address+4	     ;MODEM控制寄存器
+     10	      =0245		     LSR	     EQU     NS8250_Base_Address+5	     ;串行口状态寄存器
+     11	      =0246		     MSR	     EQU     NS8250_Base_Address+6	     ;MODEM状态寄存器
+     12				     DLL	     EQU     NS8250_Base_Address	     ;波特率除数锁存器低位
+     13	      =0241		     DLM	     EQU     NS8250_Base_Address+1	     ;波特率除数锁存器高位
+     14
+     15	0000			     _STACK	     SEGMENT STACK
+     16	0000  64*(????)				     DW	     100 DUP(?)
+     17	00C8			     _STACK	     ENDS
+     18
+     19	0000			     _DATA	     SEGMENT WORD PUBLIC 'DATA'
+     20	0000  0A*(00)		     Receive_Buffer  DB	     10	DUP(0)		     ;接受缓冲器
+     21				     Send_Buffer     EQU     Receive_Buffer	     ;发送缓冲器
+     22	000A			     _DATA	     ENDS
+     23
+     24	0000			     CODE	     SEGMENT
+     25	0000			     START	     PROC    NEAR
+     26						     ASSUME  CS:CODE, DS:_DATA,	SS:_STACK
+     27	0000  B8 0000s				     MOV     AX,_DATA
+     28	0003  8E D8				     MOV     DS,AX
+     29	0005  8E C0				     MOV     ES,AX
+     30	0007  90				     NOP
+     31	0008  E8 0028				     CALL    INIT8250
+     32	000B  B9 000A		     START2:	     MOV     CX,10		     ;接收数据(接收完设定的数据个数）
+     33	000E  E8 0017				     CALL    RECEIVE_GROUP
+     34	0011  B9 000A				     MOV     CX,10		     ;发送数据（发完设定的数据个数）
+     35	0014  E8 0004				     CALL    SEND_GROUP
+     36	0017  73 F2				     JNC     START2
+     37	0019  EB FE		     WARNING1:	     JMP     $
+     38
+     39				     ;*************发送一组字符子程序，个数在CX中***********
+     40
+     41	001B			     Send_Group	     PROC    NEAR
+     42	001B  BE 0000r				     LEA     SI,Send_Buffer
+     43	001E  AC		     Send_Group1:    LODSB
+     44	001F  E8 0030				     CALL    Send_Byte
+     45	0022  72 03				     JC	     Send_Group2
+     46	0024  E2 F8				     LOOP    Send_Group1
+     47	0026  F8				     CLC
+     48	0027  C3		     Send_Group2:    RET
+     49	0028			     Send_Group	     ENDP
+     50
+     51				     ;*************接收一组字符子程序,存放首地址在DPTR中，个数在R6R7中***********
+     52	0028			     Receive_Group   PROC    NEAR
+     53	0028  BF 0000r				     LEA     DI,Receive_Buffer
+     54	002B  E8 0040		     Receive_Group1: CALL    Receive_Byte
+     55	002E  AA				     STOSB
+     56	002F  E2 FA				     LOOP    Receive_Group1
+     57	0031  F8				     CLC
+Turbo Assembler	 Version 4.1	    23/11/20 16:20:42	    Page 2
+D:\huo\8250.asm
+
+
+
+     58	0032  C3				     RET
+     59	0033			     Receive_Group   ENDP
+     60
+     61	0033			     INIT8250	     PROC    NEAR
+     62	0033  BA 0242				     MOV     DX,ISR
+     63	0036  B0 06				     MOV     AL,06H
+     64	0038  EE				     OUT     DX,AL
+     65	0039  BA 0243				     MOV     DX,LCR
+     66	003C  B0 83				     MOV     AL,83H	     ;允许访问波特率因子寄存器
+     67	003E  EE				     OUT     DX,AL
+     68	003F  BA 0240				     MOV     DX,DLL
+     69	0042  B0 28				     MOV     AL,40	     ;除数低位寄存器，波特率设为4800=			    +
+     70				     (3.072*1000000/16)/DLMDLL
+     71	0044  EE				     OUT     DX,AL
+     72	0045  BA 0241				     MOV     DX,DLM	     ;00H送高字节寄存器
+     73	0048  B0 00				     MOV     AL,00H
+     74	004A  EE				     OUT     DX,AL
+     75	004B  BA 0243				     MOV     DX,LCR	     ;不允许访问波特率因子寄存器
+     76	004E  B0 1B				     MOV     AL,1BH	     ;数据格式为8数据位,1停止位,偶校验
+     77	0050  EE				     OUT     DX,AL
+     78	0051  C3				     RET
+     79	0052			     INIT8250	     ENDP
+     80
+     81				     ;*********发送一个字节子程序，发送A中的数，失败置1CY*********
+     82	0052			     Send_Byte	     PROC    NEAR
+     83	0052  51				     PUSH    CX
+     84	0053  50				     PUSH    AX
+     85	0054  B9 03E8				     MOV     CX,1000
+     86	0057  BA 0245				     MOV     DX,LSR
+     87	005A  EC		     REP11:	     IN	     AL,DX
+     88	005B  A8 20				     TEST    AL,20H
+     89	005D  75 07				     JNZ     OUTPORT1
+     90	005F  E2 F9				     LOOP    REP11
+     91	0061  58				     POP     AX
+     92	0062  F9				     STC
+     93	0063  EB 07 90				     JMP     EXIT8250
+     94	0066  58		     OUTPORT1:	     POP     AX
+     95	0067  BA 0240				     MOV     DX,RHR
+     96	006A  EE				     OUT     DX,AL
+     97	006B  F8				     CLC
+     98	006C  59		     EXIT8250:	     POP     CX
+     99	006D  C3				     RET
+    100	006E			     Send_Byte	     ENDP
+    101				     ;*********接收一个字节子程序,接收字节在A中，接收失败置1CY*********
+    102	006E			     Receive_Byte    PROC    NEAR
+    103	006E  BA 0245				     MOV     DX,LSR
+    104	0071  EC		     Receive1:	     IN	     AL,DX
+    105	0072  A8 01				     TEST    AL,1
+    106	0074  74 FB				     JZ	     Receive1
+    107	0076  BA 0240		     Receive2:	     MOV     DX,RHR
+    108	0079  EC				     IN	     AL,DX
+    109	007A  C3		     Receive3:	     RET
+    110	007B			     Receive_Byte    ENDP
+    111
+    112	007B			     START	     ENDP
+    113	007B			     CODE	     ENDS
+    114						     END     START
+Turbo Assembler	 Version 4.1	    23/11/20 16:20:42	    Page 3
+Symbol Table
+
+
+
+
+Symbol Name			  Type	 Value
+
+??DATE				  Text	 "23/11/20"
+??FILENAME			  Text	 "8250	  "
+??TIME				  Text	 "16:20:42"
+??VERSION			  Number 040A
+@CPU				  Text	 0101H
+@CURSEG				  Text	 CODE
+@FILENAME			  Text	 8250
+@WORDSIZE			  Text	 2
+DLL				  Alias	 NS8250_BASE_ADDRESS
+DLM				  Number 0241
+EXIT8250			  Near	 CODE:006C
+FCR				  Number 0242
+IER				  Number 0241
+INIT8250			  Near	 CODE:0033
+ISR				  Number 0242
+LCR				  Number 0243
+LSR				  Number 0245
+MCR				  Number 0244
+MSR				  Number 0246
+NS8250_BASE_ADDRESS		  Number 0240
+OUTPORT1			  Near	 CODE:0066
+RECEIVE1			  Near	 CODE:0071
+RECEIVE2			  Near	 CODE:0076
+RECEIVE3			  Near	 CODE:007A
+RECEIVE_BUFFER			  Byte	 _DATA:0000
+RECEIVE_BYTE			  Near	 CODE:006E
+RECEIVE_GROUP			  Near	 CODE:0028
+RECEIVE_GROUP1			  Near	 CODE:002B
+REP11				  Near	 CODE:005A
+RHR				  Alias	 NS8250_BASE_ADDRESS
+SEND_BUFFER			  Alias	 RECEIVE_BUFFER
+SEND_BYTE			  Near	 CODE:0052
+SEND_GROUP			  Near	 CODE:001B
+SEND_GROUP1			  Near	 CODE:001E
+SEND_GROUP2			  Near	 CODE:0027
+START				  Near	 CODE:0000
+START2				  Near	 CODE:000B
+THR				  Alias	 NS8250_BASE_ADDRESS
+WARNING1			  Near	 CODE:0019
+
+Groups & Segments		  Bit Size Align  Combine Class
+
+CODE				  16  007B Para	  none
+_DATA				  16  000A Word	  Public  DATA
+_STACK				  16  00C8 Para	  Stack
+

@@ -1,0 +1,167 @@
+Turbo Assembler	 Version 4.1	    23/11/20 18:05:17	    Page 1
+D:\huo\first.asm
+
+
+
+      1	0000			     mystack segment stack
+      2	0000			     mystack ends
+      3	0000			     data segment
+      4	0000  68 75 6F 7A 68 69	6A+	 string	     db		     'huozhijie21009201175$'
+      5	      69 65 32 31 30 30	39+
+      6	      32 30 31 31 37 35	24
+      7	0015  49 6E 70 75 74 20	63+	 tip	     db		     'Input character:$'
+      8	      68 61 72 61 63 74	65+
+      9	      72 3A 24
+     10	0026  63 68 61 72 3A 24		 orgc	     db		     'char:$'
+     11	002C  61 73 63 69 69 3A	24	 hex	     db		     'ascii:$'
+     12	0033			     data ends
+     13
+     14	0000			     code segment
+     15				     assume cs:code,ds:data
+     16	0000			     start:
+     17	0000  B8 0000s			 mov ax, data
+     18	0003  8E D8			 mov ds, ax
+     19	0005  8E C0			 mov es, ax
+     20					 ;输出姓名学号
+     21	0007  BA 0000r			 lea dx, string
+     22	000A  B4 09			 mov ah, 9
+     23	000C  CD 21			 int 21h
+     24	000E  B2 0D			 mov dl, 0Dh
+     25	0010  B4 02			 mov ah, 2
+     26					 ;换
+     27	0012  CD 21			 int 21h
+     28
+     29	0014  B2 0A			 mov dl, 0Ah
+     30	0016  B4 02			 mov ah, 2
+     31	0018  CD 21			 int 21h
+     32					 ;input
+     33	001A  BA 0015r			 lea dx, tip
+     34	001D  B4 09			 mov ah, 9
+     35	001F  CD 21			 int 21h
+     36	0021			     cmpq:
+     37					 ;换行
+     38	0021  B2 0D			 mov dl, 0Dh
+     39	0023  B4 02			 mov ah, 2
+     40	0025  CD 21			 int 21h
+     41	0027  B2 0A			 mov dl, 0Ah
+     42	0029  B4 02			 mov ah, 2
+     43	002B  CD 21			 int 21h
+     44	002D  B4 01			 mov ah, 1
+     45	002F  CD 21			 int 21h
+     46	0031  3C 71			 cmp al, 'q'
+     47					 ;若等于q，则跳转到ending
+     48	0033  74 6E			 je ending
+     49	0035  3C 51			 cmp al, 'Q'
+     50					 ;若等于Q，则跳转到ending
+     51	0037  74 6A			 je ending
+     52	0039  8A D8			 mov bl, al
+     53	003B  8A F8			 mov bh, al
+     54					 ;回车+换行
+     55	003D  B2 0D			 mov dl, 0Dh
+     56	003F  B4 02			 mov ah, 2
+     57	0041  CD 21			 int 21h
+Turbo Assembler	 Version 4.1	    23/11/20 18:05:17	    Page 2
+D:\huo\first.asm
+
+
+
+     58	0043  B2 0A			 mov dl, 0Ah
+     59	0045  B4 02			 mov ah, 2
+     60	0047  CD 21			 int 21h
+     61	0049  BA 0026r			 lea dx, orgc
+     62	004C  B4 09			 mov ah, 9
+     63	004E  CD 21			     int 21h
+     64	0050  8A D7			 mov dl, bh
+     65	0052  B4 02			 mov ah, 2
+     66	0054  CD 21			 int 21h
+     67	0056  B2 09			 mov dl, 9
+     68	0058  B4 02			 mov ah, 2
+     69	005A  CD 21			 int 21h
+     70	005C  BA 002Cr			 lea dx, hex
+     71	005F  B4 09			 mov ah, 9
+     72	0061  CD 21			 int 21h
+     73	0063  80 E3 F0			 and bl, 0F0h  ;取高四位
+     74	0066  B1 04			 mov cl, 4
+     75	0068  D2 EB			 shr bl, cl
+     76	006A  80 FB 09			 cmp bl, 9
+     77	006D  77 0C			 ja alph1
+     78	006F			     numb1:
+     79	006F  80 C3 30			 add bl, '0'
+     80	0072  8A D3			 mov dl, bl
+     81	0074  B4 02			 mov ah, 2
+     82	0076  CD 21			 int 21h
+     83	0078  EB 0A 90			 jmp low4
+     84	007B			     alph1:
+     85	007B  80 C3 37			 add bl, 37h
+     86	007E  8A D3			 mov dl, bl
+     87	0080  B4 02			 mov ah, 2
+     88	0082  CD 21			 int 21h
+     89	0084			     low4:
+     90	0084  80 E7 0F			 and bh, 0Fh  ;取低四位
+     91	0087  80 FF 09			 cmp bh, 9
+     92	008A  77 0B			 ja alph2
+     93	008C			     numb2:
+     94	008C  80 C7 30			 add bh, '0'
+     95	008F  8A D7			 mov dl, bh
+     96	0091  B4 02			 mov ah, 2
+     97	0093  CD 21			 int 21h
+     98	0095  EB 8A			 jmp cmpq
+     99	0097			     alph2:
+    100	0097  80 C7 37			 add bh, 37h
+    101	009A  8A D7			 mov dl, bh
+    102	009C  B4 02			 mov ah, 2
+    103	009E  CD 21			 int 21h
+    104	00A0  E9 FF7E			 jmp cmpq
+    105	00A3			     ending:
+    106					 ;回车+换行
+    107	00A3  B2 0D			 mov dl, 0Dh
+    108	00A5  B4 02			 mov ah, 2
+    109	00A7  CD 21			 int 21h
+    110	00A9  B2 0A			 mov dl, 0Ah
+    111	00AB  B4 02			 mov ah, 2
+    112	00AD  CD 21			 int 21h
+    113					 ;终止程序
+    114	00AF  B8 4C00			 mov ax, 4c00h
+Turbo Assembler	 Version 4.1	    23/11/20 18:05:17	    Page 3
+D:\huo\first.asm
+
+
+
+    115	00B2  CD 21			 int 21h
+    116	00B4			     code ends
+    117				     end start
+Turbo Assembler	 Version 4.1	    23/11/20 18:05:17	    Page 4
+Symbol Table
+
+
+
+
+Symbol Name			  Type	 Value
+
+??DATE				  Text	 "23/11/20"
+??FILENAME			  Text	 "first	  "
+??TIME				  Text	 "18:05:17"
+??VERSION			  Number 040A
+@CPU				  Text	 0101H
+@CURSEG				  Text	 CODE
+@FILENAME			  Text	 FIRST
+@WORDSIZE			  Text	 2
+ALPH1				  Near	 CODE:007B
+ALPH2				  Near	 CODE:0097
+CMPQ				  Near	 CODE:0021
+ENDING				  Near	 CODE:00A3
+HEX				  Byte	 DATA:002C
+LOW4				  Near	 CODE:0084
+NUMB1				  Near	 CODE:006F
+NUMB2				  Near	 CODE:008C
+ORGC				  Byte	 DATA:0026
+START				  Near	 CODE:0000
+STRING				  Byte	 DATA:0000
+TIP				  Byte	 DATA:0015
+
+Groups & Segments		  Bit Size Align  Combine Class
+
+CODE				  16  00B4 Para	  none
+DATA				  16  0033 Para	  none
+MYSTACK				  16  0000 Para	  Stack
+

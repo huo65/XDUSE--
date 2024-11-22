@@ -1,0 +1,3 @@
+"D:\CLion 2020.2.1\bin\cmake\win\bin\cmake.exe" -E rm -f CMakeFiles\thirdEdit.dir/objects.a
+C:\PROGRA~2\mingw64\bin\ar.exe cr CMakeFiles\thirdEdit.dir/objects.a @CMakeFiles\thirdEdit.dir\objects1.rsp
+C:\PROGRA~2\mingw64\bin\G__~1.EXE -g   -Wl,--whole-archive CMakeFiles\thirdEdit.dir/objects.a -Wl,--no-whole-archive  -o thirdEdit.exe -Wl,--out-implib,libthirdEdit.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\thirdEdit.dir\linklibs.rsp
